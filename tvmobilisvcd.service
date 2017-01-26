@@ -1,0 +1,13 @@
+[Unit]
+Description=TvMobili server daemon
+After=network.target
+Requires=network.target
+
+[Service]
+EnvironmentFile=/etc/tvmobili/conf/tvmobilid.conf
+ExecStart=/usr/local/bin/tvmobilisvcd -- /run /packageroot:${PACKAGEROOT} $LOGTOFILE /LogDir:${LOGROOT} 
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target
